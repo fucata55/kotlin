@@ -36,6 +36,7 @@ import org.jetbrains.kotlin.idea.compiler.configuration.Kotlin2JvmCompilerArgume
 import org.jetbrains.kotlin.idea.compiler.configuration.KotlinCommonCompilerArgumentsHolder
 import org.jetbrains.kotlin.idea.compiler.configuration.KotlinCompilerSettings
 import org.jetbrains.kotlin.idea.facet.getLibraryLanguageLevel
+import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.psi.KtElement
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.UserDataProperty
@@ -76,6 +77,18 @@ fun Module.getAndCacheLanguageLevelByDependencies(): LanguageVersion {
     }
 
     return languageLevel
+}
+
+fun Module.getStableName(): Name? {
+    val arguments = KotlinFacetSettingsProvider.getInstance(project).getInitializedSettings(this).mergedCompilerArguments
+    val explicitNameFromArguments = when (arguments) {
+        is K2JVMCompilerArguments -> arguments.moduleName
+        is K2JSCompilerArguments -> arguments.outputFile
+        is K2MetadataCompilerArguments -> arguments.moduleName
+        else -> return null // Actually, only 'null' possible here
+    }
+
+    return if (explicitNameFromArguments != null) Name.special("<$explicitNameFromArguments>") else null
 }
 
 @JvmOverloads
