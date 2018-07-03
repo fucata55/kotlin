@@ -6241,7 +6241,13 @@ public class IrJsCodegenBoxTestGenerated extends AbstractIrJsCodegenBoxTest {
                     @TestMetadata("emptyLHS.kt")
                     public void testEmptyLHS_1_2() throws Exception {
                         String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/coroutines/featureIntersection/callableReference/bound/emptyLHS.kt");
-                        doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                        try {
+                            doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                        }
+                        catch (Throwable ignore) {
+                            return;
+                        }
+                        throw new AssertionError("Looks like this test can be unmuted. Remove IGNORE_BACKEND directive for that.");
                     }
                 }
 
@@ -6260,13 +6266,25 @@ public class IrJsCodegenBoxTestGenerated extends AbstractIrJsCodegenBoxTest {
                     @TestMetadata("genericCallableReferenceArguments.kt")
                     public void testGenericCallableReferenceArguments_1_2() throws Exception {
                         String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/coroutines/featureIntersection/callableReference/function/genericCallableReferenceArguments.kt");
-                        doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                        try {
+                            doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                        }
+                        catch (Throwable ignore) {
+                            return;
+                        }
+                        throw new AssertionError("Looks like this test can be unmuted. Remove IGNORE_BACKEND directive for that.");
                     }
 
                     @TestMetadata("genericCallableReferencesWithNullableTypes.kt")
                     public void testGenericCallableReferencesWithNullableTypes_1_2() throws Exception {
                         String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/coroutines/featureIntersection/callableReference/function/genericCallableReferencesWithNullableTypes.kt");
-                        doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                        try {
+                            doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                        }
+                        catch (Throwable ignore) {
+                            return;
+                        }
+                        throw new AssertionError("Looks like this test can be unmuted. Remove IGNORE_BACKEND directive for that.");
                     }
 
                     @TestMetadata("getArityViaFunctionImpl.kt")
@@ -6289,7 +6307,13 @@ public class IrJsCodegenBoxTestGenerated extends AbstractIrJsCodegenBoxTest {
                         @TestMetadata("equalsHashCode.kt")
                         public void testEqualsHashCode_1_2() throws Exception {
                             String fileName = KotlinTestUtils.navigationMetadata("compiler/testData/codegen/box/coroutines/featureIntersection/callableReference/function/local/equalsHashCode.kt");
-                            doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                            try {
+                                doTestWithCoroutinesPackageReplacement(fileName, "kotlin.coroutines.experimental");
+                            }
+                            catch (Throwable ignore) {
+                                return;
+                            }
+                            throw new AssertionError("Looks like this test can be unmuted. Remove IGNORE_BACKEND directive for that.");
                         }
                     }
                 }
