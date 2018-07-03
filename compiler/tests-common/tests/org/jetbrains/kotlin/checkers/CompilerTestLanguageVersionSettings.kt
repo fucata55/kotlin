@@ -46,6 +46,9 @@ private fun specificFeaturesForTests(): Map<LanguageFeature, LanguageFeature.Sta
         emptyMap()
 }
 
+fun parseLanguageVersionSettingsOrDefault(directiveMap: Map<String, String>): LanguageVersionSettings =
+    parseLanguageVersionSettings(directiveMap) ?: LanguageVersionSettingsImpl.DEFAULT
+
 fun parseLanguageVersionSettings(directiveMap: Map<String, String>): LanguageVersionSettings? {
     val apiVersionString = directiveMap[API_VERSION_DIRECTIVE]
     val languageFeaturesString = directiveMap[LANGUAGE_DIRECTIVE]
